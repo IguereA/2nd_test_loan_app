@@ -13,6 +13,28 @@ st.set_page_config(page_title="Loan Risk Prediction", page_icon="🏦", layout="
 # --- CUSTOM CSS ---
 st.markdown("""
     <style>
+    
+    /* Fix for the instruction text (Upload a CSV...) */
+    [data-testid="stFileUploader"] section > div {
+        color: #F5F5F5 !important;
+    }
+
+    /* Fix for the "Browse Files" button text specifically */
+    [data-testid="stFileUploaderButton"] {
+        color: #F5F5F5 !important;
+    }
+
+    /* Fix for the "Drag and drop file here" and "Limit 200MB" text */
+    [data-testid="stFileUploader"] section small {
+        color: #D1D1D1 !important; /* Slightly muted so the main instruction pops */
+    }
+
+    /* Target the main tab text to ensure "Upload File" header is visible */
+    [data-testid="stWidgetLabel"] p {
+        color: #F5F5F5 !important;
+    }
+
+    
     /* 1. GLOBAL & BACKGROUND */
     .stApp {
         background-color: #2F353B;
