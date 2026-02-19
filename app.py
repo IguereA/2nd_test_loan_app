@@ -122,14 +122,14 @@ tab1, tab2 = st.tabs(["Single Assessment", "Batch Processing"])
 with tab1:
     col1, col2, col3 = st.columns(3)
     with col1:
-        st.subheader("👤 Personal")
+        st.subheader("📋 Personal")
         age = st.number_input("Age", 18, 100, 30, key="s_age")
         edu = st.selectbox("Education Level", ['Secondary', 'OND', 'HND', 'BSc', 'MSc'], key="s_edu")
         emp = st.selectbox("Employment Type", ['Business_Owner', 'Salary_Earner', 'Self_Employed', 'Freelancer'], key="s_emp")
         res = st.selectbox("Residential Status", ['Living_with_Parents', 'Renting', 'Own_House'], key="s_res")
         state = st.selectbox("State", ['Abuja', 'Lagos', 'Port_Harcourt', 'Ibadan', 'Kano', 'Enugu'], key="s_state")
     with col2:
-        st.subheader("💰 Financials")
+        st.subheader("🏦 Financials")
         income = st.number_input("Monthly Income (₦)", 1000.0, value=150000.0, key="s_inc")
         loan_amt = st.number_input("Loan Amount (₦)", 1000.0, value=500000.0, key="s_loan")
         duration = st.number_input("Duration (Months)", 1, 120, 12, key="s_dur")
