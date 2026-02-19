@@ -213,7 +213,7 @@ with tab1:
 # --- TAB 2: BATCH PROCESSING ---
 with tab2:
     st.subheader("Batch Loan Processing")
-    st.write("<p style='color: #4A4E54;'>Upload a CSV or Excel file. Ensure columns match the required format.")
+    st.write("Upload a CSV or Excel file. Ensure columns match the required format.")
     
     # Template download
     template_cols = ['age', 'monthly_income', 'loan_amount', 'loan_duration_months', 
