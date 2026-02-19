@@ -98,9 +98,13 @@ st.markdown("""
     }
 
     /* Adjusting the Tab Container */
-    div[data-baseweb="tab-list"] {
+    div[data-baseweb="tab"] {
         gap: 10px;
-        background-color: transparent !important;
+        background-color: #4A4E54 !important;
+        border-radius: 10px 10px 0px 0px !important;
+        padding: 10px 20px !important;
+        margin-right: 5px !important;
+        color: #D1D1D1 !important;
     }
     
     /* Remove the default underline from tabs */
