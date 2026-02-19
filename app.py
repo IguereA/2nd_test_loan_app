@@ -5,7 +5,58 @@ import joblib
 import io
 
 # --- PAGE CONFIG ---
-st.set_page_config(page_title="Loan Risk AI", page_icon="🏦", layout="wide")
+st.set_page_config(page_title="Loan Risk Prediction", page_icon="🏦", layout="wide")
+
+
+
+# --- CUSTOM CSS (The Tweaks) ---
+st.markdown("""
+    <style>
+    /* 1. Background Color (Ash/Dark Grey) */
+    .stApp {
+        background-color: #2F353B;
+        color: #FFFFFF;
+    }
+
+    /* 2. Styling Tabs as Rounded Buttons */
+    button[data-baseweb="tab"] {
+        background-color: #4A4E54 !important;
+        border-radius: 10px 10px 10px 10px !important;
+        padding: 10px 20px !important;
+        margin-right: 10px !important;
+        border: none !important;
+        color: #D1D1D1 !important;
+        transition: 0.3s;
+    }
+
+    /* Active Tab Highlight (Teal) */
+    button[data-baseweb="tab"][aria-selected="true"] {
+        background-color: #008080 !important; /* Teal Background */
+        color: #00FFF0 !important; /* Bright Teal Text */
+        font-weight: bold !important;
+    }
+
+    /* 3. Adjusting the Tab Container */
+    div[data-baseweb="tab-list"] {
+        gap: 10px;
+        background-color: transparent !important;
+    }
+    
+    /* Remove the default underline from tabs */
+    div[data-baseweb="tab-highlight"] {
+        background-color: transparent !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# ... [The rest of your code remains the same] ...
+
+
+# --- UNDER TAB 1: Update the button line ---
+# Find the line: if st.button("🔍 Analyze Single Applicant", use_container_width=True):
+# CHANGE IT TO:
+if st.button("🔍 Analyze Single Applicant"): 
+    # (Removing use_container_width makes it small/wrap around text)
 
 # --- LOAD MODEL ---
 @st.cache_resource
@@ -61,8 +112,8 @@ def preprocess_data(input_df):
     return df_final
 
 # --- UI SETUP ---
-st.title("🇳🇬 Banking Credit Risk AI")
-st.markdown("Assess individual applications or process batch files using our high-recall XGBoost model.")
+st.title("Banking Credit Risk Assessment Tool")
+st.markdown("This app predicts the likelihood of loan default based on applicant profiles.")
 
 # Create Tabs
 tab1, tab2 = st.tabs(["👤 Single Assessment", "📂 Batch Processing"])
@@ -91,7 +142,7 @@ with tab1:
         prev_def = st.number_input("Previous Defaults", 0, 50, 0, key="s_pd")
         acc_age = st.number_input("Account Age (Months)", 0, 600, 24, key="s_acc")
 
-    if st.button("🔍 Analyze Single Applicant", use_container_width=False):
+    if st.button("🔍 Analyze Single Applicant"):
         # Create a single-row dataframe
         single_data = pd.DataFrame([{
             'age': age, 'monthly_income': income, 'loan_amount': loan_amt,
