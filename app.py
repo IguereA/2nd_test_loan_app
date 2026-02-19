@@ -52,37 +52,38 @@ st.markdown("""
         color: #D1D1D1 !important;
     }
 
-/* 4. Radio & Slider Color (Teal) */
+/* 4. Radio & Slider Color (The "Total Teal" Fix) */
     
-    /* --- SLIDER ADJUSTMENTS --- */
-    /* Shrink the track height to make it look like a sleek line */
+    /* --- SLIDER --- */
+    /* Sleek Track Line */
     .stSlider [data-baseweb="slider"] > div {
         height: 4px !important;
         background-color: #008080 !important;
     }
 
-    /* Slider Knob (The circular handle) */
+    /* THE KNOB (Fixes the red slider handle) */
     .stSlider [data-baseweb="thumb"] {
-        background-color: #00FFF0 !important;
-        height: 18px !important;
-        width: 18px !important;
-        border: 2px solid #008080 !important;
+        background-color: #008080 !important; /* Force handle to Teal */
+        border: 2px solid #00FFF0 !important; /* Cyan glow border */
+        box-shadow: 0 0 5px #00FFF0 !important; /* Soft glow */
     }
 
-    /* --- RADIO BUTTON ADJUSTMENTS --- */
-    /* Target the outer circle when selected */
-    div[data-baseweb="radio"] div[role="radiogroup"] div[data-testid="stWidgetLabel"] + div div[aria-checked="true"] {
-        border-color: #008080 !important;
-    }
-
-    /* Target the inner dot when selected (Ensuring it's not red) */
+    /* --- RADIO BUTTONS --- */
+    /* Target the actual circle and the dot inside */
     div[data-baseweb="radio"] div[aria-checked="true"] > div {
-        background-color: #008080 !important;
+        background-color: #008080 !important; /* Inner dot */
+        border-color: #008080 !important;    /* Outer circle */
     }
 
-    /* Ensure the label next to the radio is also white/off-white */
-    div[data-baseweb="radio"] label {
-        color: #F5F5F5 !important;
+    /* Target the focus ring (The red shadow when clicked) */
+    div[data-baseweb="radio"] div:focus-within {
+        box-shadow: none !important;
+    }
+
+    /* Override the Streamlit "Primary" color for all input widgets */
+    /* This is a 'catch-all' for the red elements */
+    :root {
+        --primary-color: #008080;
     }
 
     /* 5. Tabs Styling (Button-like, Teal Highlight) */
