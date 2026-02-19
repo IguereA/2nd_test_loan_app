@@ -223,7 +223,7 @@ with tab1:
                 st.error("### HIGH RISK (REJECT)")
             else:
                 st.success("### LOW RISK (APPROVE)")
-                st.balloons()
+                #st.balloons()
         with c2:
             st.metric("Default Probability", f"{safe_prob:.2%}")
             # st.progress(safe_prob)
