@@ -20,7 +20,7 @@ st.markdown("""
         background-color: #2F353B;
         color: #F5F5F5 !important;
     }
-    label, p, span, .stMarkdown, .stText {
+    label, p, span, .stMarkdown, .stText, [data-testid="stWidgetLabel"] p {
         color: #F5F5F5 !important;
     }
 
@@ -69,14 +69,31 @@ st.markdown("""
         color: #00FFF0 !important;
     }
 
-    /* 4. FILE UPLOADER BOX & SLIDER FIXES */
-    [data-testid="stFileUploader"] {
-        border: 1px dashed #4A4E54 !important;
-        background-color: #3d4147 !important;
+
+
+/* 4. FILE UPLOADER BOX & SLIDER FIXES */
+    /* This fixes the white bar in your screenshot */
+    [data-testid="stFileUploader"] section {
+        background-color: #3d4147 !important; 
+        border: 1px dashed #008080 !important;
         border-radius: 10px !important;
-        padding: 10px !important;
+        color: #F5F5F5 !important;
+    }
+
+    /* This fixes the "test_loans.xlsx" area at the bottom left */
+    [data-testid="stFileUploaderFileName"], 
+    [data-testid="stFileUploader"] ul li {
+        color: #F5F5F5 !important;
+        background-color: #2F353B !important;
+        border-radius: 5px !important;
+    }
+
+    /* Ensures icons inside the uploader are Teal/Cyan */
+    [data-testid="stFileUploader"] svg {
+        fill: #00FFF0 !important;
     }
     
+    /* Keep your existing slider fixes below them */
     .stSlider [data-baseweb="slider"] > div {
         height: 4px !important;
         background-color: #4A4E54 !important; 
@@ -85,6 +102,7 @@ st.markdown("""
         background-color: #008080 !important;
         border: 2px solid #00FFF0 !important;
     }
+
     
     /* 5. SCROLLBAR */
     ::-webkit-scrollbar { width: 10px; }
