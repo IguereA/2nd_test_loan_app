@@ -9,47 +9,106 @@ st.set_page_config(page_title="Loan Risk Prediction", page_icon="🏦", layout="
 
 
 
-# --- CUSTOM CSS (The Tweaks) ---
+
+# --- CUSTOM CSS ---
 st.markdown("""
     <style>
-    /* 1. Background Color (Ash/Dark Grey) */
+    /* 1. Main Background and Global Text Visibility (Off-White) */
     .stApp {
         background-color: #2F353B;
-        color: #FFFFFF;
-    }
-
-    /* 2. Styling Tabs as Rounded Buttons */
-    button[data-baseweb="tab"] {
-        background-color: #4A4E54 !important;
-        border-radius: 10px 10px 10px 10px !important;
-        padding: 10px 20px !important;
-        margin-right: 10px !important;
-        border: none !important;
-        color: #D1D1D1 !important;
-        transition: 0.3s;
-    }
-
-    /* Active Tab Highlight (Teal) */
-    button[data-baseweb="tab"][aria-selected="true"] {
-        background-color: #008080 !important; /* Teal Background */
-        color: #D1D1D1 !important; /* Light Grey / Silver Text */
-        font-weight: bold !important;
-    }
-
-    /* 3. Adjusting the Tab Container */
-    div[data-baseweb="tab-list"] {
-        gap: 10px;
-        background-color: transparent !important;
+        color: #F5F5F5 !important;
     }
     
-    /* Remove the default underline from tabs */
+    /* Global text color for all labels and paragraphs */
+    label, p, span, .stMarkdown, .stText, [data-testid="stWidgetLabel"] p {
+        color: #F5F5F5 !important;
+    }
+
+    /* 2. Scrollbar Styling (Very Light Grey) */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #2F353B;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #D1D1D1; 
+        border-radius: 5px;
+    }
+
+    /* 3. Button Styling (Rounded, Visible Text, Fit-to-Content) */
+    div.stButton > button {
+        background-color: #4A4E54;
+        color: #F5F5F5 !important;
+        border: 1px solid #008080;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        transition: 0.3s;
+    }
+    
+    div.stButton > button:hover {
+        border-color: #D1D1D1;
+        background-color: #3d4147;
+        color: #D1D1D1 !important;
+    }
+
+    /* 4. Radio & Slider Color (Teal) */
+    /* Slider Track */
+    .stSlider [data-baseweb="slider"] div {
+        background-color: #008080 !important;
+    }
+    /* Slider Knob */
+    .stSlider [data-baseweb="thumb"] {
+        background-color: #D1D1D1 !important;
+    }
+    /* Radio Buttons */
+    div[data-baseweb="radio"] div[aria-checked="true"] {
+        background-color: #008080 !important;
+    }
+
+    /* 5. Tabs Styling (Button-like, Teal Highlight) */
+    button[data-baseweb="tab"] {
+        background-color: #4A4E54 !important;
+        border-radius: 10px 10px 0px 0px !important;
+        padding: 10px 20px !important;
+        margin-right: 5px !important;
+        color: #D1D1D1 !important;
+        border: none !important;
+    }
+    button[data-baseweb="tab"][aria-selected="true"] {
+        background-color: #008080 !important;
+        color: #D1D1D1 !important;
+        font-weight: bold !important;
+    }
+    
+    /* Remove default underline */
     div[data-baseweb="tab-highlight"] {
         background-color: transparent !important;
+    }
+
+    /* 6. Batch Page & File Uploader Fixes */
+    [data-testid="stFileUploader"] {
+        background-color: #3d4147;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    [data-testid="stFileUploader"] section {
+        color: #F5F5F5 !important;
+    }
+    
+    /* Progress Bar Color (Teal) */
+    div[data-testid="stProgress"] > div > div > div {
+        background-color: #008080 !important;
+    }
+
+    /* Table/Dataframe Header Fix */
+    .stDataFrame th {
+        background-color: #4A4E54 !important;
+        color: #F5F5F5 !important;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# ... [The rest of your code remains the same] ...
 
 
 # --- UNDER TAB 1: Update the button line ---
@@ -129,14 +188,14 @@ with tab1:
         res = st.selectbox("Residential Status", ['Living_with_Parents', 'Renting', 'Own_House'], key="s_res")
         state = st.selectbox("State", ['Abuja', 'Lagos', 'Port_Harcourt', 'Ibadan', 'Kano', 'Enugu'], key="s_state")
     with col2:
-        st.subheader("🏦 Financials")
+        st.subheader("💵 Financials")
         income = st.number_input("Monthly Income (₦)", 1000.0, value=150000.0, key="s_inc")
         loan_amt = st.number_input("Loan Amount (₦)", 1000.0, value=500000.0, key="s_loan")
         duration = st.number_input("Duration (Months)", 1, 120, 12, key="s_dur")
         deps = st.number_input("Dependents", 0, 20, 0, key="s_dep")
         bank_acc = st.radio("Has Bank Account?", ["Yes", "No"], key="s_bank")
     with col3:
-        st.subheader("📊 Credit")
+        st.subheader("📈 Credit")
         score = st.slider("Credit Score", 300, 850, 650, key="s_score")
         prev_loans = st.number_input("Previous Loans", 0, 50, 0, key="s_pl")
         prev_def = st.number_input("Previous Defaults", 0, 50, 0, key="s_pd")
@@ -194,7 +253,7 @@ with tab2:
             
         st.success(f"Successfully loaded {len(batch_df)} applications.")
         
-        if st.button("🚀 Process Batch Predictions"):
+        if st.button("Process Batch Predictions"):
             try:
                 # Preprocess and Predict
                 processed_batch = preprocess_data(batch_df)
