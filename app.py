@@ -91,7 +91,7 @@ with tab1:
         prev_def = st.number_input("Previous Defaults", 0, 50, 0, key="s_pd")
         acc_age = st.number_input("Account Age (Months)", 0, 600, 24, key="s_acc")
 
-    if st.button("🔍 Analyze Single Applicant", use_container_width=True):
+    if st.button("🔍 Analyze Single Applicant", use_container_width=False):
         # Create a single-row dataframe
         single_data = pd.DataFrame([{
             'age': age, 'monthly_income': income, 'loan_amount': loan_amt,
