@@ -13,84 +13,16 @@ st.set_page_config(page_title="Loan Risk Prediction", page_icon="🏦", layout="
 # --- CUSTOM CSS ---
 st.markdown("""
     <style>
-    /* 1. Main Background and Global Text Visibility (Off-White) */
+    /* 1. GLOBAL & BACKGROUND */
     .stApp {
         background-color: #2F353B;
         color: #F5F5F5 !important;
     }
-    
-    /* Global text color for all labels and paragraphs */
-    label, p, span, .stMarkdown, .stText, [data-testid="stWidgetLabel"] p {
+    label, p, span, .stMarkdown, .stText {
         color: #F5F5F5 !important;
     }
 
-    /* 2. Scrollbar Styling (Very Light Grey) */
-    ::-webkit-scrollbar {
-        width: 10px;
-    }
-    ::-webkit-scrollbar-track {
-        background: #2F353B;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: #D1D1D1; 
-        border-radius: 5px;
-    }
-
-    /* 3. Button Styling (Rounded, Visible Text, Fit-to-Content) */
-    div.stButton > button {
-        background-color: #4A4E54;
-        color: #F5F5F5 !important;
-        border: 1px solid #008080;
-        border-radius: 8px;
-        padding: 0.5rem 1rem;
-        transition: 0.3s;
-    }
-    
-    div.stButton > button:hover {
-        border-color: #D1D1D1;
-        background-color: #3d4147;
-        color: #D1D1D1 !important;
-    }
-
-
-/* 4. Radio & Slider Color (Clean & Minimalist) */
-    
-    /* --- SLIDER --- */
-    /* The Track (The horizontal line) - Changed to Slate Grey for a cleaner look */
-    .stSlider [data-baseweb="slider"] > div {
-        height: 4px !important;
-        background-color: #4A4E54 !important; 
-    }
-
-    /* The Progress (The part of the line to the left of the knob) */
-    /* We make this teal so you can see the "filled" portion */
-    .stSlider [data-baseweb="slider"] > div > div {
-        background-color: #008080 !important;
-    }
-
-    /* The Knob (The circular handle) */
-    .stSlider [data-baseweb="thumb"] {
-        background-color: #008080 !important;
-        border: 2px solid #00FFF0 !important;
-        height: 16px !important;
-        width: 16px !important;
-    }
-
-    /* --- RADIO BUTTONS --- */
-    /* Fix the red dot issue */
-    div[data-baseweb="radio"] div[aria-checked="true"] > div {
-        background-color: #008080 !important;
-        border-color: #008080 !important;
-    }
-
-    /* Ensure the inner circle/dot is also Teal */
-    div[data-baseweb="radio"] div[aria-checked="true"] > div > div {
-        background-color: #00FFF0 !important;
-    }
-
-
-
-    /* 5. Tabs Styling (Button-like, Teal Highlight) */
+    /* 2. THE TABS (Kept separate so they stay rounded/teal) */
     button[data-baseweb="tab"] {
         background-color: #4A4E54 !important;
         border-radius: 10px 10px 0px 0px !important;
@@ -101,41 +33,62 @@ st.markdown("""
     }
     button[data-baseweb="tab"][aria-selected="true"] {
         background-color: #008080 !important;
-        color: #D1D1D1 !important;
+        color: #00FFF0 !important;
         font-weight: bold !important;
     }
-    
-    /* Remove default underline */
     div[data-baseweb="tab-highlight"] {
         background-color: transparent !important;
     }
 
-
-    
-
-    /* 6. Batch Page & File Uploader Fixes */
-    [data-testid="stFileUploader"] {
-        background-color: #4A4E54;
-        border-radius: 10px;
-        padding: 20px;
-    }
-    [data-testid="stFileUploader"] section {
-        color: #4A4E54 !important;
-    }
-    
-    /* Progress Bar Color (Teal) */
-    div[data-testid="stProgress"] > div > div > div {
-        background-color: #008080 !important;
-    }
-
-    /* Table/Dataframe Header Fix */
-    .stDataFrame th {
+    /* 3. UNIFIED BUTTONS (Download, Browse, and Process) */
+    div.stButton > button, 
+    div.stDownloadButton > button, 
+    label[data-testid="stFileUploaderButton"] {
         background-color: #4A4E54 !important;
         color: #F5F5F5 !important;
+        border: 1px solid #008080 !important;
+        border-radius: 8px !important;
+        padding: 0.5rem 1rem !important;
+        transition: 0.3s !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-weight: 400 !important;
+        height: auto !important;
+        width: auto !important;
     }
+
+    /* Hover effect for all buttons */
+    div.stButton > button:hover, 
+    div.stDownloadButton > button:hover, 
+    label[data-testid="stFileUploaderButton"]:hover {
+        border-color: #00FFF0 !important;
+        background-color: #3d4147 !important;
+        color: #00FFF0 !important;
+    }
+
+    /* 4. FILE UPLOADER BOX & SLIDER FIXES */
+    [data-testid="stFileUploader"] {
+        border: 1px dashed #4A4E54 !important;
+        background-color: #3d4147 !important;
+        border-radius: 10px !important;
+        padding: 10px !important;
+    }
+    
+    .stSlider [data-baseweb="slider"] > div {
+        height: 4px !important;
+        background-color: #4A4E54 !important; 
+    }
+    .stSlider [data-baseweb="thumb"] {
+        background-color: #008080 !important;
+        border: 2px solid #00FFF0 !important;
+    }
+    
+    /* 5. SCROLLBAR */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-thumb { background: #D1D1D1; border-radius: 5px; }
     </style>
     """, unsafe_allow_html=True)
-
 
 
 # --- UNDER TAB 1: Update the button line ---
