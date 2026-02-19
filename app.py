@@ -55,7 +55,7 @@ st.markdown("""
 # --- UNDER TAB 1: Update the button line ---
 # Find the line: if st.button("🔍 Analyze Single Applicant", use_container_width=True):
 # CHANGE IT TO:
-if st.button("🔍 Analyze Single Applicant"): 
+#if st.button("🔍 Analyze Single Applicant"): 
     # (Removing use_container_width makes it small/wrap around text)
 
 # --- LOAD MODEL ---
