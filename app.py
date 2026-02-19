@@ -20,19 +20,17 @@ st.markdown("""
     }
 
     /* Fix for the "Browse Files" button text specifically */
-    [data-testid="stFileUploaderButton"] {
-        color: #4A4E54 !important;
-    }
+    [data-testid="stFileUploaderButton"]:hover {
+        border-color: #00FFF0 !important;
+        background-color: #3d4147 !important;
+        color: #00FFF0 !important;
 
     /* Fix for the "Drag and drop file here" and "Limit 200MB" text */
     [data-testid="stFileUploader"] section small {
-        color: #D1D1D1 !important; /* Slightly muted so the main instruction pops */
+        color: #4A4E54 !important; /* Slightly muted so the main instruction pops */
     }
 
-    /* Target the main tab text to ensure "Upload File" header is visible */
-    [data-testid="stWidgetLabel"] p {
-        color: #4A4E54 !important;
-    }
+    
 
     
     /* 1. GLOBAL & BACKGROUND */
