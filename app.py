@@ -88,26 +88,29 @@ st.markdown("""
         background-color: #00FFF0 !important;
     }
 
-    
-    /* 5. Tabs Styling (Button-like, Teal Highlight) */
-    button[data-baseweb="tab"] {
-        background-color: #4A4E54 !important;
-        border-radius: 10px 10px 0px 0px !important;
-        padding: 10px 20px !important;
-        margin-right: 5px !important;
-        color: #D1D1D1 !important;
-        border: none !important;
-    }
+
+
+   /* 5. Active Tab Highlight (Teal) */
     button[data-baseweb="tab"][aria-selected="true"] {
-        background-color: #008080 !important;
-        color: #D1D1D1 !important;
+        background-color: #008080 !important; /* Teal Background */
+        color: #D1D1D1 !important; /* Light Grey / Silver Text */
         font-weight: bold !important;
     }
+
+    /* Adjusting the Tab Container */
+    div[data-baseweb="tab-list"] {
+        gap: 10px;
+        background-color: transparent !important;
+    }
     
-    /* Remove default underline */
+    /* Remove the default underline from tabs */
     div[data-baseweb="tab-highlight"] {
         background-color: transparent !important;
     }
+
+
+
+    
 
     /* 6. Batch Page & File Uploader Fixes */
     [data-testid="stFileUploader"] {
@@ -249,7 +252,7 @@ with tab1:
                 st.balloons()
         with c2:
             st.metric("Default Probability", f"{safe_prob:.2%}")
-            st.progress(safe_prob)
+            # st.progress(safe_prob)
 
 # --- TAB 2: BATCH PROCESSING ---
 with tab2:
