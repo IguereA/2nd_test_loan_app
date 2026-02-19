@@ -32,7 +32,7 @@ st.markdown("""
     /* Active Tab Highlight (Teal) */
     button[data-baseweb="tab"][aria-selected="true"] {
         background-color: #008080 !important; /* Teal Background */
-        color: #00FFF0 !important; /* Bright Teal Text */
+        color: #D1D1D1 !important; /* Light Grey / Silver Text */
         font-weight: bold !important;
     }
 
