@@ -99,7 +99,6 @@ st.markdown("""
 
     /* Adjusting the Tab Container */
     div[data-baseweb="tab"] {
-        gap: 10px;
         background-color: #4A4E54 !important;
         border-radius: 10px 10px 0px 0px !important;
         padding: 10px 20px !important;
