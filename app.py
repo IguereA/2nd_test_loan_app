@@ -52,18 +52,37 @@ st.markdown("""
         color: #D1D1D1 !important;
     }
 
-    /* 4. Radio & Slider Color (Teal) */
-    /* Slider Track */
-    .stSlider [data-baseweb="slider"] div {
+/* 4. Radio & Slider Color (Teal) */
+    
+    /* --- SLIDER ADJUSTMENTS --- */
+    /* Shrink the track height to make it look like a sleek line */
+    .stSlider [data-baseweb="slider"] > div {
+        height: 4px !important;
         background-color: #008080 !important;
     }
-    /* Slider Knob */
+
+    /* Slider Knob (The circular handle) */
     .stSlider [data-baseweb="thumb"] {
-        background-color: #D1D1D1 !important;
+        background-color: #00FFF0 !important;
+        height: 18px !important;
+        width: 18px !important;
+        border: 2px solid #008080 !important;
     }
-    /* Radio Buttons */
-    div[data-baseweb="radio"] div[aria-checked="true"] {
+
+    /* --- RADIO BUTTON ADJUSTMENTS --- */
+    /* Target the outer circle when selected */
+    div[data-baseweb="radio"] div[role="radiogroup"] div[data-testid="stWidgetLabel"] + div div[aria-checked="true"] {
+        border-color: #008080 !important;
+    }
+
+    /* Target the inner dot when selected (Ensuring it's not red) */
+    div[data-baseweb="radio"] div[aria-checked="true"] > div {
         background-color: #008080 !important;
+    }
+
+    /* Ensure the label next to the radio is also white/off-white */
+    div[data-baseweb="radio"] label {
+        color: #F5F5F5 !important;
     }
 
     /* 5. Tabs Styling (Button-like, Teal Highlight) */
@@ -88,12 +107,12 @@ st.markdown("""
 
     /* 6. Batch Page & File Uploader Fixes */
     [data-testid="stFileUploader"] {
-        background-color: #3d4147;
+        background-color: #4A4E54;
         border-radius: 10px;
         padding: 20px;
     }
     [data-testid="stFileUploader"] section {
-        color: #F5F5F5 !important;
+        color: #4A4E54 !important;
     }
     
     /* Progress Bar Color (Teal) */
