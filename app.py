@@ -90,27 +90,25 @@ st.markdown("""
 
 
 
-   /* 5. Active Tab Highlight (Teal) */
-    button[data-baseweb="tab"][aria-selected="true"] {
-        background-color: #008080 !important; /* Teal Background */
-        color: #D1D1D1 !important; /* Light Grey / Silver Text */
-        font-weight: bold !important;
-    }
-
-    /* Adjusting the Tab Container */
-    div[data-baseweb="tab"] {
+    /* 5. Tabs Styling (Button-like, Teal Highlight) */
+    button[data-baseweb="tab"] {
         background-color: #4A4E54 !important;
         border-radius: 10px 10px 0px 0px !important;
         padding: 10px 20px !important;
         margin-right: 5px !important;
         color: #D1D1D1 !important;
+        border: none !important;
+    }
+    button[data-baseweb="tab"][aria-selected="true"] {
+        background-color: #008080 !important;
+        color: #D1D1D1 !important;
+        font-weight: bold !important;
     }
     
-    /* Remove the default underline from tabs */
+    /* Remove default underline */
     div[data-baseweb="tab-highlight"] {
         background-color: transparent !important;
     }
-
 
 
     
