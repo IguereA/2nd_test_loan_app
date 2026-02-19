@@ -16,12 +16,12 @@ st.markdown("""
     
     /* Fix for the instruction text (Upload a CSV...) */
     [data-testid="stFileUploader"] section > div {
-        color: #F5F5F5 !important;
+        color: #4A4E54 !important;
     }
 
     /* Fix for the "Browse Files" button text specifically */
     [data-testid="stFileUploaderButton"] {
-        color: #F5F5F5 !important;
+        color: #4A4E54 !important;
     }
 
     /* Fix for the "Drag and drop file here" and "Limit 200MB" text */
@@ -31,7 +31,7 @@ st.markdown("""
 
     /* Target the main tab text to ensure "Upload File" header is visible */
     [data-testid="stWidgetLabel"] p {
-        color: #F5F5F5 !important;
+        color: #4A4E54 !important;
     }
 
     
