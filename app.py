@@ -73,7 +73,7 @@ st.markdown("""
 
 /* 4. FILE UPLOADER BOX & SLIDER FIXES */
     
-    /* Centering the Cloud Icon and Text */
+    /* 1. The Container: Centering the Cloud & Text */
     [data-testid="stFileUploader"] section {
         background-color: #3d4147 !important; 
         border: 1px dashed #008080 !important;
@@ -81,36 +81,39 @@ st.markdown("""
         color: #F5F5F5 !important;
         display: flex !important;
         flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
+        align-items: center !important; /* Centers cloud/text horizontally */
+        justify-content: center !important; /* Centers cloud/text vertically */
         text-align: center !important;
-        padding: 40px 10px !important; /* Added padding for a better look */
+        padding: 40px 10px !important;
+        position: relative !important; /* Essential for positioning the button */
     }
 
-    /* THE BROWSE FILES BUTTON FIX (Forcing it to stay dark) */
+    /* 2. The Button: Moving it back to the Right Side */
     [data-testid="stFileUploader"] button {
         background-color: #4A4E54 !important;
         color: #F5F5F5 !important;
         border: 1px solid #008080 !important;
         border-radius: 8px !important;
+        position: absolute !important;
+        right: 20px !important; /* Adjust this to move it further right/left */
         box-shadow: none !important;
     }
 
-    /* Fixing the "Browse files" hover so it doesn't turn white */
+    /* 3. Button Hover State */
     [data-testid="stFileUploader"] button:hover {
         border-color: #00FFF0 !important;
         color: #00FFF0 !important;
         background-color: #3d4147 !important;
     }
 
-    /* Center the cloud icon specifically */
+    /* 4. The Cloud Icon */
     [data-testid="stFileUploader"] svg {
         fill: #00FFF0 !important;
         margin-bottom: 10px !important;
-        transform: scale(1.2) !important; /* Makes the cloud a bit more prominent */
+        transform: scale(1.3) !important;
     }
 
-    /* Fix for the "Uploaded File" list visibility */
+    /* 5. Uploaded File List Visibility */
     [data-testid="stFileUploaderFileName"], 
     [data-testid="stFileUploader"] ul li {
         color: #F5F5F5 !important;
