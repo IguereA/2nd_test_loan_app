@@ -73,47 +73,55 @@ st.markdown("""
 
 /* 4. FILE UPLOADER BOX & SLIDER FIXES */
     
-    /* 1. The Container: Centering the Cloud & Text */
+    /* The Container: Centering everything correctly */
     [data-testid="stFileUploader"] section {
         background-color: #3d4147 !important; 
         border: 1px dashed #008080 !important;
         border-radius: 10px !important;
         color: #F5F5F5 !important;
         display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important; /* Centers cloud/text horizontally */
-        justify-content: center !important; /* Centers cloud/text vertically */
-        text-align: center !important;
-        padding: 40px 10px !important;
-        position: relative !important; /* Essential for positioning the button */
+        flex-direction: row !important; /* Items sit side-by-side */
+        align-items: center !important; /* Vertical center */
+        padding: 20px !important;
     }
 
-    /* 2. The Button: Moving it back to the Right Side */
+    /* Wrap the Cloud Icon and Drag-and-Drop text to keep them together */
+    /* This ensures they stay centered while the button goes right */
+    [data-testid="stFileUploader"] section > div:nth-child(1) {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        flex-grow: 1 !important; /* Takes up middle space to center content */
+        margin-left: 100px !important; /* Offsets the button's width to keep text dead-center */
+    }
+
+    /* THE BROWSE FILES BUTTON: Stays inside on the right */
     [data-testid="stFileUploader"] button {
         background-color: #4A4E54 !important;
         color: #F5F5F5 !important;
         border: 1px solid #008080 !important;
         border-radius: 8px !important;
-        position: absolute !important;
-        right: 20px !important; /* Adjust this to move it further right/left */
-        box-shadow: none !important;
+        margin-left: auto !important; /* Pushes button to the far right */
+        padding: 8px 16px !important;
+        z-index: 10 !important;
     }
 
-    /* 3. Button Hover State */
+    /* Button Hover */
     [data-testid="stFileUploader"] button:hover {
         border-color: #00FFF0 !important;
         color: #00FFF0 !important;
         background-color: #3d4147 !important;
     }
 
-    /* 4. The Cloud Icon */
+    /* The Cloud Icon */
     [data-testid="stFileUploader"] svg {
         fill: #00FFF0 !important;
-        margin-bottom: 10px !important;
+        margin-right: 15px !important;
         transform: scale(1.3) !important;
     }
 
-    /* 5. Uploaded File List Visibility */
+    /* Uploaded File List Visibility (Bottom left) */
     [data-testid="stFileUploaderFileName"], 
     [data-testid="stFileUploader"] ul li {
         color: #F5F5F5 !important;
@@ -121,7 +129,7 @@ st.markdown("""
         border: 1px solid #4A4E54 !important;
     }
     
-    /* SLIDERS (Kept for consistency) */
+    /* SLIDERS */
     .stSlider [data-baseweb="slider"] > div {
         height: 4px !important;
         background-color: #4A4E54 !important; 
