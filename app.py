@@ -142,7 +142,7 @@ st.markdown("""
     
     /* 5. SCROLLBAR */
     ::-webkit-scrollbar { width: 10px; }
-    ::-webkit-scrollbar-thumb { background: #D1D1D1; border-radius: 5px; }
+    ::-webkit-scrollbar-thumb { background: #00FFF0; border-radius: 5px; }
     </style>
     """, unsafe_allow_html=True)
 
