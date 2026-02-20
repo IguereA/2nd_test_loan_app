@@ -72,28 +72,53 @@ st.markdown("""
 
 
 /* 4. FILE UPLOADER BOX & SLIDER FIXES */
-    /* This fixes the white bar in your screenshot */
+    
+    /* Centering the Cloud Icon and Text */
     [data-testid="stFileUploader"] section {
         background-color: #3d4147 !important; 
         border: 1px dashed #008080 !important;
         border-radius: 10px !important;
         color: #F5F5F5 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        padding: 40px 10px !important; /* Added padding for a better look */
     }
 
-    /* This fixes the "test_loans.xlsx" area at the bottom left */
+    /* THE BROWSE FILES BUTTON FIX (Forcing it to stay dark) */
+    [data-testid="stFileUploader"] button {
+        background-color: #4A4E54 !important;
+        color: #F5F5F5 !important;
+        border: 1px solid #008080 !important;
+        border-radius: 8px !important;
+        box-shadow: none !important;
+    }
+
+    /* Fixing the "Browse files" hover so it doesn't turn white */
+    [data-testid="stFileUploader"] button:hover {
+        border-color: #00FFF0 !important;
+        color: #00FFF0 !important;
+        background-color: #3d4147 !important;
+    }
+
+    /* Center the cloud icon specifically */
+    [data-testid="stFileUploader"] svg {
+        fill: #00FFF0 !important;
+        margin-bottom: 10px !important;
+        transform: scale(1.2) !important; /* Makes the cloud a bit more prominent */
+    }
+
+    /* Fix for the "Uploaded File" list visibility */
     [data-testid="stFileUploaderFileName"], 
     [data-testid="stFileUploader"] ul li {
         color: #F5F5F5 !important;
         background-color: #2F353B !important;
-        border-radius: 5px !important;
-    }
-
-    /* Ensures icons inside the uploader are Teal/Cyan */
-    [data-testid="stFileUploader"] svg {
-        fill: #00FFF0 !important;
+        border: 1px solid #4A4E54 !important;
     }
     
-    /* Keep your existing slider fixes below them */
+    /* SLIDERS (Kept for consistency) */
     .stSlider [data-baseweb="slider"] > div {
         height: 4px !important;
         background-color: #4A4E54 !important; 
